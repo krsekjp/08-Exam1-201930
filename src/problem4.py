@@ -3,8 +3,8 @@ Exam 1, problem 4.
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Josh Krsek.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -84,6 +84,19 @@ def problem4(point1, point2, n, window):
     #          Tests have been written for you (above).
     # IMPORTANT: For PARTIAL CREDIT, ignore the colors.
     # -------------------------------------------------------------------------
+    point1.attach_to(window)
+    point2.attach_to(window)
+    line = rg.Line(point1,point2)
+    midpoint = line.get_midpoint()
+    #point_to_midpoint = rg.Line(point1, line.get_midpoint())
+    for k in range(n):
+        dot_color2 = rg.Point((point1.x+((midpoint.x-point1.x)/(n+1))*(k+1)), (point1.y+(midpoint.y-point1.y)/(n+1)*(k+1)))
+        dot_color2.fill_color = point2.fill_color
+        dot_color2.attach_to(window)
+        dot_color1 = rg.Point((midpoint.x+((-midpoint.x+point2.x)/(n+1))*(k+1)), (midpoint.y+(-midpoint.y+point2.y)/(n+1)*(k+1)))
+        dot_color1.fill_color = point1.fill_color
+        dot_color1.attach_to(window)
+    window.render()
 
 
 # -----------------------------------------------------------------------------
