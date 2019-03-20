@@ -80,7 +80,7 @@ def problem4(point1, point2, n, window):
       :type window:  rg.RoseWindow
     """
     # -------------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #          Tests have been written for you (above).
     # IMPORTANT: For PARTIAL CREDIT, ignore the colors.
     # -------------------------------------------------------------------------
@@ -90,10 +90,12 @@ def problem4(point1, point2, n, window):
     midpoint = line.get_midpoint()
     #point_to_midpoint = rg.Line(point1, line.get_midpoint())
     for k in range(n):
-        dot_color2 = rg.Point((point1.x+((midpoint.x-point1.x)/(n+1))*(k+1)), (point1.y+(midpoint.y-point1.y)/(n+1)*(k+1)))
+        dot_color2 = rg.Point((point1.x+((point2.x-point1.x)/(2*(n+1)))*(k+1)), (point1.y+(point2.y-point1.y)/(2*(n+1))*(k+1)))
         dot_color2.fill_color = point2.fill_color
         dot_color2.attach_to(window)
-        dot_color1 = rg.Point((midpoint.x+((-midpoint.x+point2.x)/(n+1))*(k+1)), (midpoint.y+(-midpoint.y+point2.y)/(n+1)*(k+1)))
+
+    for k in range(n):
+        dot_color1 = rg.Point((dot_color2.x+((-dot_color2.x+point2.x)/(n+1))*(k+1)), (dot_color2.y+(-dot_color2.y+point2.y)/(n+1)*(k+1)))
         dot_color1.fill_color = point1.fill_color
         dot_color1.attach_to(window)
     window.render()
