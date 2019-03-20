@@ -86,9 +86,7 @@ def problem4(point1, point2, n, window):
     # -------------------------------------------------------------------------
     point1.attach_to(window)
     point2.attach_to(window)
-    line = rg.Line(point1,point2)
-    midpoint = line.get_midpoint()
-    #point_to_midpoint = rg.Line(point1, line.get_midpoint())
+    
     for k in range(n):
         dot_color2 = rg.Point((point1.x+((point2.x-point1.x)/(2*(n+1)))*(k+1)), (point1.y+(point2.y-point1.y)/(2*(n+1))*(k+1)))
         dot_color2.fill_color = point2.fill_color
